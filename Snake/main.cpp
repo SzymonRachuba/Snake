@@ -1,13 +1,15 @@
 #include <iostream>
-#include "Board.h"
-
-using namespace std;
-
+#include "SnakeGame.h"
 
 int main() {
 
+	SnakeGame::SnakeGame* game = new SnakeGame::SnakeGame();
 
-	Board board = Board();
 
+
+
+	delete game;
+
+	system("pause");
 	return 0;
 }
