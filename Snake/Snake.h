@@ -1,18 +1,39 @@
 #pragma once
-#include "Stack.h"
-class Snake
-{
-public:
-	int posx, posy;
-	int id;
-	Stack* segments;
+#include "Position.h"
 
+#include <vector>
 
-	Snake(int posx, int posy, int id);
+namespace SnakeGame {
 
-	~Snake();
+	class Snake
+	{
+	public :
 
-private:
-	int len = 8;
-};
+		enum class Direction {
+			UP, RIGHT, DOWN, LEFT
+		};
+
+		int len;
+		std::vector<Position> tail;
+		Direction direction = Direction::RIGHT;
+
+		Snake(int x, int y, int len);
+		~Snake();
+
+		void Move();
+		void Eat();
+		void RemovePieces(int count);
+		bool OutOfBounds(int width, int height);
+		int SelfEat();
+
+	private :
+		int headColor = 214, tailColor = 220;
+		int growCounter;
+
+		void MoveUp();
+		void MoveRight();
+		void MoveDown();
+		void MoveLeft();
+	};
+}
 
